@@ -1,5 +1,6 @@
 from flask_mail import Message
 from backend.app import mail
+import logging
 
 def send_notification(subject, recipients, body):
     """Sends an email notification."""
@@ -8,5 +9,4 @@ def send_notification(subject, recipients, body):
     try:
         mail.send(msg)
     except Exception as e:
-        # In a real app, you'd want to log this error.
-        print(f"Error sending email: {e}")
+        logging.error(f"Error sending email: {e}")

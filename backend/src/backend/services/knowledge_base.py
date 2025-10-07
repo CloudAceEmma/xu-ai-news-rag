@@ -5,20 +5,20 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from backend.services.embedding import LlamaServerEmbeddings
 from backend.models import db, Document
 from backend.config import Config
-from backend.auth.routes import get_current_user_id
+
 
 def get_user_faiss_index_path(user_id):
     """Constructs the path for a user's FAISS index."""
     return os.path.join(Config.FAISS_INDEX_PATH, f"user_{user_id}")
 
-def add_document_to_kb(file_path, document_type, source=None, tags=None):
+
+def add_document_to_kb(user_id, file_path, document_type, source=None, tags=None):
     """
     Adds a document to the knowledge base: loads, chunks, embeds,
     and stores it in a user-specific FAISS vector store.
     """
-    user_id = get_current_user_id()
     if not user_id:
-        raise ValueError("User identity not found in JWT token.")
+        raise ValueError("User ID must be provided.")
 
     # 1. Load the document
     if document_type == 'txt':

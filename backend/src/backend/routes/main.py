@@ -42,7 +42,7 @@ def upload_document(current_user):
         source = request.form.get('source')
         tags = request.form.get('tags')
 
-        add_document_to_kb(file_path, document_type, source, tags)
+        add_document_to_kb(current_user.id, file_path, document_type, source, tags)
         
         return jsonify({"msg": "File uploaded and processed successfully"}), 201
     return jsonify({"msg": "File type not allowed"}), 400

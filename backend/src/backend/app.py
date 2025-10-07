@@ -1,4 +1,5 @@
 import os
+import logging
 from flask import Flask
 from flask_mail import Mail
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -20,6 +21,11 @@ def create_app(config_class=Config):
     """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config_class)
+
+    # Configure logging
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]')
+
     if app.config.get("TESTING"):
         app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
     else:
