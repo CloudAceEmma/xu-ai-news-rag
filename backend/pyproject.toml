@@ -1,0 +1,49 @@
+[project]
+name = "xu-ai-news-rag-backend"
+version = "0.1.0"
+description = "Backend for the XU-News-AI-RAG project"
+authors = [{ name = "Gemini", email = "gemini@google.com" }]
+dependencies = [
+    "flask",
+    "flask-sqlalchemy",
+    "python-dotenv",
+    "flask-cors",
+    "flask-mail",
+    "apscheduler",
+    "langchain",
+    "langchain-community",
+    "faiss-cpu",
+    "sqlalchemy",
+    "requests",
+    "feedparser",
+    "beautifulsoup4",
+    "scikit-learn",
+    "werkzeug==2.2.2",
+    "pypdf",
+    "openpyxl",
+    "gunicorn",
+    "pyjwt"
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "coverage",
+]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+
+[tool.coverage.run]
+source = ["src"]
+
+[dependency-groups]
+dev = [
+    "iniconfig>=2.1.0",
+    "pluggy>=1.6.0",
+    "pygments>=2.19.2",
+]
