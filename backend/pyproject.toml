@@ -28,13 +28,6 @@ requires-python = "==3.11.*"
 readme = "README.md"
 license = { text = "MIT" }
 
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "pytest-cov",
-    "coverage",
-]
-
 [tool.pytest.ini_options]
 pythonpath = "src"
 
@@ -43,7 +36,10 @@ source = ["src"]
 
 [dependency-groups]
 dev = [
+    "coverage>=7.10.7",
     "iniconfig>=2.1.0",
     "pluggy>=1.6.0",
     "pygments>=2.19.2",
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
 ]
